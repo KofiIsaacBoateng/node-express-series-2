@@ -1,6 +1,7 @@
 const { format } = require('date-fns')
 const { v4: uuid } = require("uuid")
 const EventEmitter = require('events')
+const { logEvents } = require("./log-events")
 
 class Emitter extends EventEmitter{ }
 const newEmmitter = new Emitter()
