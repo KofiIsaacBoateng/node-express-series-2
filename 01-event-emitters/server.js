@@ -5,15 +5,11 @@ const { logEvents } = require("./log-events")
 
 class Emitter extends EventEmitter{ }
 const newEmmitter = new Emitter()
+const logTypes = ['ERROR', 'INFO']
+const randomType = Math.floor(Math.random() * 2)
 
-newEmmitter.on('log', (data) => {
-    try {
-        console.log(data)
-    } catch (error) {
-        console.log(err)
-    }
-})
+newEmmitter.on('log', (logtype, logMessage, logfile ) => logEvents(logtype, logMessage, logfile))
 
 setTimeout(() => {
-    newEmmitter.emit('log', "Data received by event 'log'!")
-}, 3000)
+    newEmmitter.emit('log', logTypes[randomType], 'Unauthorized Login', 'sys.log')
+}, 2000)
